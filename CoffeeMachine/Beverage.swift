@@ -8,14 +8,10 @@
 
 import UIKit
 
-class Americano: {
-   let waterAmount: Int
-   let coffeeAmount: Int
-    
-    init() {
-    self.waterAmount = 50
-    self.coffeeAmount = 20
-    }
-   
+struct Beverage {
+    var waterAmount: Int
+    var coffeeAmount: Int
+    var milkAmount: Int
 }
+
 
