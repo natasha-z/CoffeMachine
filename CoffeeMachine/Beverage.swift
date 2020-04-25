@@ -8,7 +8,11 @@
 
 import UIKit
 
-struct Beverage {
+struct Beverage: Comparable {
+    static func < (lhs: Beverage, rhs: Beverage) -> Bool {
+        true
+    }
+    
     var waterAmount: Int
     var coffeeAmount: Int
     var milkAmount: Int

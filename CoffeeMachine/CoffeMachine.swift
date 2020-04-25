@@ -8,32 +8,92 @@
 
 import UIKit
 
+//MARK: Coffee Machine
+
 class CoffeMachine: NSObject {
     var coffeTank: Int
     var waterTank: Int
     var milkTank: Int
     
-   override init() {
-    self.coffeTank = 500
-    self.waterTank = 2000
-    self.milkTank = 1000
+    override init() {
+        self.coffeTank = 500
+        self.waterTank = 2000
+        self.milkTank = 1000
     }
     
+    // MARK: fill tanks
+    
     func fillWaterTank() {
+        self.waterTank = 2000
+    }
+    func fillMilkTank() {
+        self.milkTank = 1000
+    }
+    func fillCoffeeTank() {
+        self.coffeTank = 500
+    }
+    
+    // MARK: minus used ingredients
+    
+   private func useIngrediants(_ beverage: Beverage) {
+        self.coffeTank = self.coffeTank - beverage.coffeeAmount
+        self.waterTank = self.waterTank - beverage.waterAmount
+        self.milkTank = self.milkTank - beverage.milkAmount
         
     }
     
-    func makeAmericano() -> Beverage {
-        let americano = Beverage(waterAmount: 50, coffeeAmount: 50, milkAmount: 0)
-        waterTank = waterTank - americano.waterAmount
-        if coffeTank < americano.coffeeAmount {
-            print("Add more coffee")
-            throw RuntimeError("Error message.")
+    //MARK: check ingredients availability
+    
+    private func isIngrediantAvailable(_ beverage: Beverage) -> Bool {
+        if self.coffeTank <= beverage.coffeeAmount {
+            print("Coffe tank is empty. Fill coffe tank.")
+            return false
         }
-        if waterTank < americano.waterAmount {
-            print("Add more water")
+        if self.waterTank <= beverage.waterAmount {
+            print("Water tank is empty. Fill water tank")
+            return false
         }
-        return americano
+        if self.milkTank <= beverage.milkAmount {
+            print("Milk tank is empty. Fill milk tank")
+            return false
+        }
+        return true
     }
     
-  }
+    //MARK: make Americano
+    
+    func makeAmericano() -> Beverage? {
+        let americano = Beverage(waterAmount: 100, coffeeAmount: 50, milkAmount: 0)
+        if isIngrediantAvailable(americano) {
+            useIngrediants(americano)
+            return americano
+        } else {
+            return nil
+        }
+    }
+    
+    //MARK: make Espresso
+    
+    func makeEspresso() -> Beverage? {
+        let espresso = Beverage(waterAmount: 50, coffeeAmount: 50, milkAmount: 0)
+        if isIngrediantAvailable(espresso) {
+            useIngrediants(espresso)
+            return espresso
+        } else {
+            return nil
+        }
+    }
+    
+    //MARK: make Capucino
+    
+    func makeCapucino() -> Beverage? {
+        let capucino = Beverage(waterAmount: 50, coffeeAmount: 50, milkAmount: 20)
+        if isIngrediantAvailable(capucino) {
+            useIngrediants(capucino)
+            return capucino
+        } else {
+            return nil
+        }
+    }
+    
+}
