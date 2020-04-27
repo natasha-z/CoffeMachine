@@ -86,11 +86,11 @@ class CoffeMachine: NSObject {
     
     //MARK: make Capucino
     
-    func makeCapucino() -> Beverage? {
-        let capucino = Beverage(waterAmount: 50, coffeeAmount: 50, milkAmount: 20)
-        if isIngrediantAvailable(capucino) {
-            useIngrediants(capucino)
-            return capucino
+    func makeCappuccino() -> Beverage? {
+        let cappuccino = Beverage(waterAmount: 50, coffeeAmount: 50, milkAmount: 20)
+        if isIngrediantAvailable(cappuccino) {
+            useIngrediants(cappuccino)
+            return cappuccino
         } else {
             return nil
         }

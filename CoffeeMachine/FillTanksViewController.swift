@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class FillTanksViewController: UIViewController {
 var coffeMachine = CoffeMachine()
 
     
