@@ -61,7 +61,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Americano"/>
                                 <connections>
-                                    <action selector="makeAmericanoButton:" destination="OGa-Vr-1v9" eventType="touchUpInside" id="V9N-ez-ClX"/>
+                                    <action selector="makeAmericanoButton:" destination="OGa-Vr-1v9" eventType="touchUpInside" id="9TX-iC-egv"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YeA-gL-DQn">
@@ -80,10 +80,20 @@
                                     <action selector="makeCappuccinoButton:" destination="OGa-Vr-1v9" eventType="touchUpInside" id="orR-67-9aB"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cF2-ej-7kQ">
+                                <rect key="frame" x="127" y="503" width="238" height="54"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Hpj-oh-GnW"/>
                     </view>
+                    <connections>
+                        <outlet property="beverageLabel" destination="cF2-ej-7kQ" id="Rcb-IQ-Shy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IZl-Y0-2zj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -12,15 +12,18 @@ class MakeBeverageViewController: UIViewController {
     let americano = CoffeMachine()
     let cappuccino = CoffeMachine()
     let espresso = CoffeMachine()
-
+    
+    @IBOutlet weak var beverageLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func makeAmericanoButton(_ sender: Any) {
+    @IBAction func makeAmericanoButton(_ sender: UIButton) {
         americano.makeAmericano()
+
     }
     
     @IBAction func makeCappuccinoButton(_ sender: Any) {

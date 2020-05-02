@@ -66,6 +66,8 @@ class CoffeMachine: NSObject {
         let americano = Beverage(waterAmount: 100, coffeeAmount: 50, milkAmount: 0)
         if isIngrediantAvailable(americano) {
             useIngrediants(americano)
+            let ready = MakeBeverageViewController()
+            ready.beverageLabel.text = "Americano is ready"
             return americano
         } else {
             return nil
