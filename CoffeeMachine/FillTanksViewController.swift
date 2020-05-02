@@ -11,6 +11,7 @@ import UIKit
 class FillTanksViewController: UIViewController {
 var coffeMachine = CoffeMachine()
 
+@IBOutlet weak var tankLabel: UILabel!
     
     
     override func viewDidLoad() {
@@ -19,16 +20,16 @@ var coffeMachine = CoffeMachine()
     }
     
     @IBAction func fillWaterTankButton(_ sender: Any) {
-        coffeMachine.fillWaterTank()
-        
+        tankLabel.text = coffeMachine.fillWaterTank()
     }
     
     @IBAction func fillMilkTankButton(_ sender: Any) {
-        coffeMachine.fillMilkTank()
+        tankLabel.text = coffeMachine.fillMilkTank()
+        
     }
     
     @IBAction func fillCoffeTankButton(_ sender: Any) {
-        coffeMachine.fillCoffeeTank()
+        tankLabel.text = coffeMachine.fillCoffeeTank()
     }
     
 

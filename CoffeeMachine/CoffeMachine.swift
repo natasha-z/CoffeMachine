@@ -23,14 +23,17 @@ class CoffeMachine: NSObject {
     
     // MARK: fill tanks
     
-    func fillWaterTank() {
+    func fillWaterTank() -> String {
         self.waterTank = 2000
+        return "Water Tank Full"
     }
-    func fillMilkTank() {
+    func fillMilkTank() -> String {
         self.milkTank = 1000
+        return "Milk Tank Full"
     }
-    func fillCoffeeTank() {
+    func fillCoffeeTank() -> String {
         self.coffeTank = 500
+        return "Coffee Tank Full"
     }
     
     // MARK: minus used ingredients
@@ -39,62 +42,59 @@ class CoffeMachine: NSObject {
         self.coffeTank = self.coffeTank - beverage.coffeeAmount
         self.waterTank = self.waterTank - beverage.waterAmount
         self.milkTank = self.milkTank - beverage.milkAmount
-        
     }
     
     //MARK: check ingredients availability
     
-    private func isIngrediantAvailable(_ beverage: Beverage) -> Bool {
+    private func isIngrediantAvailable(_ beverage: Beverage) -> String? {
         if self.coffeTank <= beverage.coffeeAmount {
-            print("Coffe tank is empty. Fill coffe tank.")
-            return false
+            return "Coffee tank is empty. Fill coffe tank."
         }
         if self.waterTank <= beverage.waterAmount {
-            print("Water tank is empty. Fill water tank")
-            return false
+            return "Water tank is empty. Fill water tank"
         }
         if self.milkTank <= beverage.milkAmount {
-            print("Milk tank is empty. Fill milk tank")
-            return false
+            return "Milk tank is empty. Fill milk tank"
         }
-        return true
+        return nil
     }
     
     //MARK: make Americano
     
-    func makeAmericano() -> Beverage? {
+    func makeAmericano() -> String? {
         let americano = Beverage(waterAmount: 100, coffeeAmount: 50, milkAmount: 0)
-        if isIngrediantAvailable(americano) {
+        let ingredientsAvailability = isIngrediantAvailable(americano)
+        if ingredientsAvailability == nil {
             useIngrediants(americano)
-            let ready = MakeBeverageViewController()
-            ready.beverageLabel.text = "Americano is ready"
-            return americano
+            return "Americano is ready"
         } else {
-            return nil
+            return ingredientsAvailability
         }
     }
     
     //MARK: make Espresso
     
-    func makeEspresso() -> Beverage? {
+    func makeEspresso() -> String? {
         let espresso = Beverage(waterAmount: 50, coffeeAmount: 50, milkAmount: 0)
-        if isIngrediantAvailable(espresso) {
+        let ingredientsAvailability = isIngrediantAvailable(espresso)
+        if ingredientsAvailability == nil {
             useIngrediants(espresso)
-            return espresso
+            return "Espresso is ready"
         } else {
-            return nil
+            return ingredientsAvailability
         }
     }
     
     //MARK: make Capucino
     
-    func makeCappuccino() -> Beverage? {
+    func makeCappuccino() -> String? {
         let cappuccino = Beverage(waterAmount: 50, coffeeAmount: 50, milkAmount: 20)
-        if isIngrediantAvailable(cappuccino) {
+        let ingredientsAvailability = isIngrediantAvailable(cappuccino)
+        if ingredientsAvailability == nil {
             useIngrediants(cappuccino)
-            return cappuccino
+            return "Cappuccino is ready"
         } else {
-            return nil
+            return ingredientsAvailability
         }
     }
     
