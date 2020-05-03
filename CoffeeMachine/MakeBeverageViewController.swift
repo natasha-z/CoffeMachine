@@ -9,9 +9,7 @@
 import UIKit
 
 class MakeBeverageViewController: UIViewController {
-    let americano = CoffeMachine()
-    let cappuccino = CoffeMachine()
-    let espresso = CoffeMachine()
+    let coffeeMachine = CoffeMachine()
     
     @IBOutlet weak var beverageLabel: UILabel!
     
@@ -23,15 +21,21 @@ class MakeBeverageViewController: UIViewController {
     }
     
     @IBAction func makeAmericanoButton(_ sender: Any) {
-        beverageLabel.text = americano.makeAmericano()
+        beverageLabel.text = coffeeMachine.makeAmericano()
     }
     
     @IBAction func makeCappuccinoButton(_ sender: Any) {
-        beverageLabel.text = cappuccino.makeCappuccino()
+        beverageLabel.text = coffeeMachine.makeCappuccino()
     }
     
     @IBAction func makeEspressonButton(_ sender: Any) {
-        beverageLabel.text = espresso.makeEspresso()
+        beverageLabel.text = coffeeMachine.makeEspresso()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let fillTanksVC = segue.destination as? FillTanksViewController {
+            fillTanksVC.makeBevVC = self
+        }
     }
     
 }
