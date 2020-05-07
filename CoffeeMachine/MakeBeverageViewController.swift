@@ -12,10 +12,17 @@ class MakeBeverageViewController: UIViewController {
     let coffeeMachine = CoffeMachine()
     
     @IBOutlet weak var beverageLabel: UILabel!
+    func initialText() {
+        beverageLabel.text = "Select your coffee"
+    }
+   
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "Franke"
+        initialText()
+        
 
         // Do any additional setup after loading the view.
     }
